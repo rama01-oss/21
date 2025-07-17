@@ -1,0 +1,204 @@
+body {
+  margin: 0;
+  padding-bottom: 70px;
+  font-family: 'Tahoma', sans-serif;
+  background-color: #f3f7fa;
+}
+
+header {
+  background-color: #002f5f;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header .logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+header .links a {
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #002f5f;
+    margin-top: 10px;
+  }
+
+  .links.show {
+    display: flex;
+  }
+
+  .links a {
+    padding: 10px;
+    border-top: 1px solid #ccc;
+  }
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 30px;
+}
+
+.calculator {
+  background-color: #eaf4ff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 64, 128, 0.2);
+  width: 300px;
+  text-align: center;
+  border: 2px solid #0077cc;
+}
+
+.calculator h2 {
+  color: #002f5f;
+}
+
+input, select, button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #0077cc;
+}
+
+button {
+  background-color: #004080;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #003060;
+}
+
+footer {
+  background-color: #002f5f;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* style.css */
+
+/* الشريط العلوي */
+header {
+  background-color: #003366; /* أزرق بحري غامق */
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  gap: 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* زر القائمة للجوال */
+.menu-icon {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+/* الشريط العلوي */
+header {
+  background-color: #003366;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* زر القائمة للجوال */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* عند تصغير الشاشة */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #003366;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 10px 20px;
+    border-top: 1px solid #004080;
+  }
+}

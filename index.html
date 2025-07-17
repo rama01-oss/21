@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>آلة الحساب</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      direction: rtl;
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      background-color: #e0f7fa;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header::before {
+      content: "0101010101010101010101010101";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 100%;
+      white-space: nowrap;
+      font-size: 80px;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.1);
+      animation: moveBinary 10s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes moveBinary {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .logo {
+      position: relative;
+      font-size: 28px;
+      font-weight: bold;
+      z-index: 1;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      z-index: 2;
+    }
+
+    nav.links {
+      position: relative;
+      z-index: 1;
+    }
+
+    nav.links a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .calculator {
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #f1f8e9;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .calculator input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .calculator button {
+      padding: 10px 15px;
+      margin: 5px;
+      font-size: 18px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .calculator button:hover {
+      background-color: #388e3c;
+    }
+
+    .result {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #dcedc8;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    /* استجابة الجوال */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav.links {
+        display: none;
+        flex-direction: column;
+        background-color: #00796b;
+        padding: 10px;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+      }
+
+      nav.links.show {
+        display: flex;
+      }
+
+      nav.links a {
+        color: white;
+        padding: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- رأس الصفحة -->
+  <header>
+    <div class="logo">آلة الحساب</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav class="links" id="navLinks">
+      <a href="index.html">الرئيسية</a>
+      <a href="about.html">من نحن</a>
+    </nav>
+  </header>
+
+  <!-- المحتوى -->
+  <main>
+    <div class="calculator">
+      <h2>احسب عمليتك</h2>
+      <input type="number" id="num1" placeholder="الرقم الأول">
+      <div>
+        <button onclick="setOperation('+')">+</button>
+        <button onclick="setOperation('-')">-</button>
+        <button onclick="setOperation('*')">×</button>
+        <button onclick="setOperation('/')">÷</button>
+      </div>
+      <input type="number" id="num2" placeholder="الرقم الثاني">
+      <button onclick="calculate()">احسب</button>
+      <div id="result" class="result"></div>
+    </div>
+  </main>
+
+  <!-- تذييل -->
+  <footer>
+    © 2025 آلة الحساب | جميع الحقوق محفوظة
+  </footer>
+
+  <!-- سكربت -->
+  <script>
+    let currentOp = '+';
+
+    function setOperation(op) {
+      currentOp = op;
+    }
+
+    function calculate() {
+      const n1 = parseFloat(document.getElementById('num1').value);
+      const n2 = parseFloat(document.getElementById('num2').value);
+      const resultDiv = document.getElementById('result');
+      if (isNaN(n1) || isNaN(n2)) {
+        resultDiv.textContent = '❗ أدخل رقمين صحيحين';
+        resultDiv.style.color = 'red';
+        return;
+      }
+
+      let result;
+      switch (currentOp) {
+        case '+': result = n1 + n2; break;
+        case '-': result = n1 - n2; break;
+        case '*': result = n1 * n2; break;
+        case '/': result = n2 !== 0 ? (n1 / n2).toFixed(2) : 'لا يمكن القسمة على صفر'; break;
+      }
+
+      resultDiv.textContent = `🔹 النتيجة: ${result}`;
+      resultDiv.style.color = '#002f5f';
+    }
+
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+
+</body>
+</html>
